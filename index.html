@@ -1,0 +1,2074 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yardhouse by Moda — Market Strategy & Launch Playbook</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@600;700&display=swap');
+
+  :root {
+    --navy: #0e1f3d;
+    --navy-mid: #162d56;
+    --gold: #c8a84b;
+    --gold-light: #dfc070;
+    --cream: #f5f0e8;
+    --warm-white: #faf8f4;
+    --off-white: #f0ebe0;
+    --text-dark: #1a1a1a;
+    --text-mid: #444;
+    --text-muted: #888;
+    --check: #2a7a4b;
+    --cross: #c0392b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #1a1a1a;
+    font-family: 'Barlow', sans-serif;
+    color: var(--text-dark);
+  }
+
+  /* ── NAV ── */
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: var(--navy);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    height: 52px;
+    border-bottom: 1px solid rgba(200,168,75,0.3);
+  }
+  .nav-brand {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  .nav-brand span { color: var(--gold); }
+  .nav-controls { display: flex; gap: 0.5rem; align-items: center; }
+  .nav-btn {
+    background: none;
+    border: 1px solid rgba(200,168,75,0.4);
+    color: var(--gold);
+    font-family: 'Barlow', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.2s;
+  }
+  .nav-btn:hover { background: var(--gold); color: var(--navy); }
+  .nav-counter { font-size: 12px; color: rgba(255,255,255,0.5); font-family: 'Barlow Condensed', sans-serif; letter-spacing: 1px; }
+
+  /* ── SLIDE WRAPPER ── */
+  .deck { padding-top: 52px; }
+
+  .slide {
+    width: 100%;
+    min-height: 100vh;
+    display: none;
+    position: relative;
+    overflow: hidden;
+  }
+  .slide.active { display: flex; flex-direction: column; }
+
+  /* ── SLIDE LAYOUTS ── */
+  .slide-dark { background: var(--navy); }
+  .slide-cream { background: var(--cream); }
+  .slide-warm { background: var(--warm-white); }
+
+  /* ── COMMON ELEMENTS ── */
+  .slide-num {
+    position: absolute;
+    bottom: 2rem; right: 2.5rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: rgba(200,168,75,0.5);
+    text-transform: uppercase;
+  }
+  .slide-num-light { color: rgba(200,168,75,0.35); }
+
+  .gold-rule { width: 48px; height: 2px; background: var(--gold); margin-bottom: 1.5rem; }
+  .gold-rule-sm { width: 32px; height: 2px; background: var(--gold); margin: 0.75rem 0; }
+
+  .slide-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+
+  .slide-h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 52px);
+    font-weight: 400;
+    line-height: 1.1;
+    color: #fff;
+    margin-bottom: 1rem;
+  }
+  .slide-h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(22px, 3vw, 38px);
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 0.25rem;
+  }
+  .slide-h2-light { color: #fff; }
+  .slide-h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+  .slide-body { font-size: 15px; font-weight: 300; line-height: 1.7; color: var(--text-mid); }
+  .slide-body-light { color: rgba(255,255,255,0.75); }
+
+  /* Gold vertical accent bar */
+  .v-bar {
+    width: 3px;
+    background: var(--gold);
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  /* ── SLIDE 1: COVER ── */
+  #s1 {
+    background: var(--navy);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  #s1 .cover-bg {
+    position: absolute;
+    inset: 0;
+    background: url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1400&q=60') center/cover no-repeat;
+    opacity: 0.15;
+  }
+  #s1 .cover-inner { position: relative; z-index: 1; padding: 3rem 2rem; max-width: 700px; }
+  #s1 .cover-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+  #s1 .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(40px, 7vw, 80px);
+    font-weight: 400;
+    color: #fff;
+    line-height: 1.0;
+    margin-bottom: 0.5rem;
+  }
+  #s1 .cover-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(20px, 3vw, 32px);
+    font-weight: 400;
+    color: var(--gold);
+    font-style: italic;
+    margin-bottom: 2rem;
+  }
+  #s1 .cover-rule { width: 60px; height: 1px; background: var(--gold); margin: 0 auto 2rem; }
+  #s1 .cover-meta {
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    letter-spacing: 0.5px;
+    line-height: 1.8;
+  }
+  #s1 .cover-address {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-top: 2.5rem;
+  }
+
+  /* ── SLIDE 2: SECTOR STATS ── */
+  #s2 { background: var(--cream); }
+  #s2 .s2-inner {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr auto;
+    padding: 3rem 4rem;
+    gap: 0;
+  }
+  #s2 .s2-header { grid-column: 1 / -1; margin-bottom: 2.5rem; display: flex; gap: 1.5rem; align-items: flex-start; }
+  #s2 .s2-stats { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem 4rem; margin-bottom: 2.5rem; }
+  .stat-block .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(52px, 7vw, 80px);
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+  .stat-block .stat-label {
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text-mid);
+    line-height: 1.4;
+    max-width: 240px;
+  }
+  #s2 .s2-footer {
+    grid-column: 1 / -1;
+    border-top: 1px solid rgba(14,31,61,0.12);
+    padding-top: 1.25rem;
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  #s2 .s2-insight {
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--text-mid);
+    font-style: italic;
+    line-height: 1.6;
+    flex: 1;
+  }
+  #s2 .s2-source {
+    font-family: 'Barlow', sans-serif;
+    font-size: 11px;
+    color: var(--text-muted);
+    text-align: right;
+    line-height: 1.6;
+    flex-shrink: 0;
+    max-width: 260px;
+  }
+
+  /* ── SLIDE 3: ONE ADDRESS ── */
+  #s3 { background: var(--navy); flex-direction: row; }
+  #s3 .s3-img {
+    width: 50%;
+    background: url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=900&q=70') center/cover no-repeat;
+    position: relative;
+  }
+  #s3 .s3-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, transparent 60%, var(--navy));
+  }
+  #s3 .s3-content {
+    width: 50%;
+    padding: 4rem 3.5rem 4rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  #s3 .s3-facts { margin: 2rem 0; display: flex; flex-direction: column; gap: 1rem; }
+  #s3 .s3-fact { display: flex; align-items: baseline; gap: 1rem; }
+  #s3 .s3-fact-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--gold);
+    flex-shrink: 0;
+    min-width: 56px;
+  }
+  #s3 .s3-fact-text {
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.4;
+  }
+  #s3 .s3-prop {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(200,168,75,0.25);
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--gold);
+    line-height: 1.5;
+  }
+
+  /* ── SLIDE 4: COMPARABLES TABLE ── */
+  #s4 { background: var(--warm-white); }
+  #s4 .s4-inner { flex: 1; padding: 3rem 4rem; display: flex; flex-direction: column; }
+  .moda-table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; }
+  .moda-table thead tr { background: var(--navy); }
+  .moda-table thead th {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.9);
+    padding: 1rem 1.25rem;
+    text-align: left;
+  }
+  .moda-table tbody tr { border-bottom: 1px solid rgba(14,31,61,0.08); }
+  .moda-table tbody tr:nth-child(even) { background: rgba(200,168,75,0.06); }
+  .moda-table tbody tr.highlight { background: rgba(200,168,75,0.12); }
+  .moda-table tbody tr.highlight td:first-child { font-weight: 700; color: var(--navy); }
+  .moda-table tbody td {
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text-mid);
+    padding: 0.9rem 1.25rem;
+  }
+  .moda-table .data-note {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 0.75rem;
+    font-style: italic;
+  }
+  .est-badge {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    background: var(--gold);
+    color: var(--navy);
+    padding: 2px 6px;
+    border-radius: 2px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  /* ── SLIDE 5: PUBLIC REALM ── */
+  #s5 { background: var(--navy); }
+  #s5 .s5-inner { flex: 1; padding: 3rem 4rem; display: flex; flex-direction: column; }
+  .realm-table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; }
+  .realm-table thead tr { border-bottom: 1px solid rgba(200,168,75,0.3); }
+  .realm-table thead th {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 0 1rem 1rem;
+    text-align: left;
+  }
+  .realm-table thead th:first-child { color: rgba(255,255,255,0.5); padding-left: 0; }
+  .realm-table thead th.yh-col { color: var(--gold); }
+  .realm-table thead th.comp-col { color: rgba(255,255,255,0.55); }
+  .realm-table tbody tr { border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .realm-table tbody td {
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.6);
+    padding: 0.85rem 1rem;
+  }
+  .realm-table tbody td:first-child { color: rgba(255,255,255,0.45); padding-left: 0; font-size: 13px; letter-spacing: 0.3px; }
+  .realm-table tbody td.yh-col { color: rgba(255,255,255,0.9); font-weight: 500; }
+  .realm-table .chk { color: #4caf50; font-size: 18px; }
+  .realm-table .crs { color: #e57373; font-size: 16px; }
+  .realm-table .zone-yh { color: var(--gold); font-weight: 700; font-family: 'Barlow Condensed', sans-serif; font-size: 16px; letter-spacing: 1px; }
+  .realm-table .zone-comp { color: rgba(255,255,255,0.5); }
+  .yh-special { color: var(--gold) !important; font-weight: 600 !important; font-size: 13px !important; }
+  .realm-partial { color: rgba(255,255,255,0.55) !important; font-size: 12px !important; font-weight: 300 !important; line-height: 1.4; }
+  .realm-partial .partial-tick { color: #f0c040; font-size: 14px; }
+
+  /* ── SLIDE 6: PRICE LADDER ── */
+  #s6 { background: var(--cream); }
+  #s6 .s6-inner { flex: 1; padding: 3rem 4rem; display: flex; flex-direction: column; }
+  .ladder { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 10px; }
+  .ladder-row { display: flex; align-items: center; gap: 1rem; }
+  .ladder-label {
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-mid);
+    min-width: 200px;
+    text-align: right;
+  }
+  .ladder-label.yh-label { color: var(--navy); font-weight: 600; }
+  .ladder-bar-wrap { flex: 1; position: relative; height: 36px; display: flex; align-items: center; }
+  .ladder-bar {
+    height: 32px;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: 0.5px;
+    transition: width 0.8s ease;
+  }
+  .bar-comp { background: var(--navy); }
+  .bar-yh { background: var(--gold); color: var(--navy); }
+  .bar-btr { background: #8B9EC9; }
+  #s6 .s6-footer {
+    margin-top: 1.5rem;
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--navy);
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(14,31,61,0.1);
+  }
+
+  /* ── SLIDE 7: DECISION MATRIX ── */
+  #s7 { background: var(--navy); }
+  #s7 .s7-inner { flex: 1; padding: 3rem 4rem; display: flex; flex-direction: column; }
+  .matrix-table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; }
+  .matrix-table thead tr { border-bottom: 2px solid rgba(200,168,75,0.4); }
+  .matrix-table thead th {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 0 1.5rem 1rem;
+    text-align: left;
+  }
+  .matrix-table thead th:first-child { color: rgba(255,255,255,0.4); padding-left: 0; }
+  .matrix-table thead th.yh-h { color: var(--gold); }
+  .matrix-table thead th.comp-h { color: rgba(255,255,255,0.5); }
+  .matrix-table tbody tr { border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .matrix-table tbody td {
+    font-family: 'Barlow', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.55);
+    padding: 1rem 1.5rem;
+  }
+  .matrix-table tbody td:first-child { color: rgba(255,255,255,0.4); font-size: 13px; letter-spacing: 0.5px; padding-left: 0; }
+  .matrix-table .yh-val { color: #fff; font-weight: 600; }
+  .matrix-table .yh-best { color: var(--gold); font-weight: 700; font-family: 'Barlow Condensed', sans-serif; font-size: 17px; letter-spacing: 0.5px; }
+
+  /* ── SLIDE 8: ZONE 2 ── */
+  #s8 { background: var(--cream); flex-direction: row; }
+  #s8 .s8-img {
+    width: 50%;
+    background: url('https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=900&q=70') center/cover no-repeat;
+    position: relative;
+  }
+  #s8 .s8-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to left, transparent 60%, var(--cream));
+  }
+  #s8 .s8-content {
+    width: 50%;
+    padding: 4rem 3.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  #s8 .s8-points { margin: 1.5rem 0; display: flex; flex-direction: column; gap: 1.25rem; }
+  #s8 .s8-point { display: flex; gap: 1rem; align-items: flex-start; }
+  #s8 .s8-point-icon {
+    width: 32px; height: 32px;
+    background: var(--navy);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 14px;
+    color: var(--gold);
+  }
+  #s8 .s8-point-text { font-size: 14px; font-weight: 400; color: var(--text-mid); line-height: 1.5; padding-top: 6px; }
+  #s8 .s8-point-text strong { color: var(--navy); font-weight: 600; }
+  #s8 .s8-insight {
+    margin-top: 2rem;
+    padding: 1rem 1.25rem;
+    background: var(--navy);
+    border-radius: 3px;
+    border-left: 3px solid var(--gold);
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.5;
+  }
+
+  /* ── SLIDE 9: STRATEGIC POSITION ── */
+  #s9 { background: var(--warm-white); }
+  #s9 .s9-inner { flex: 1; padding: 3rem 4rem; display: flex; flex-direction: column; }
+  .position-table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; }
+  .position-table thead tr { background: var(--navy); }
+  .position-table thead th {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.85);
+    padding: 0.9rem 1.25rem;
+    text-align: left;
+  }
+  .position-table tbody tr { border-bottom: 1px solid rgba(14,31,61,0.08); }
+  .position-table tbody tr:nth-child(even) { background: rgba(200,168,75,0.05); }
+  .position-table tbody td {
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    color: var(--text-mid);
+    padding: 0.9rem 1.25rem;
+  }
+  .position-table td:first-child { color: var(--navy); font-weight: 500; }
+  .position-table td:nth-child(2) { color: var(--text-dark); font-weight: 400; }
+  .position-table .action-cell {
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    color: var(--gold);
+    font-weight: 600;
+  }
+  .gap-badge {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    background: #f0e4e4;
+    color: var(--cross);
+    padding: 2px 7px;
+    border-radius: 2px;
+    margin-left: 8px;
+  }
+
+  /* ── SLIDE 10: POSITIONING GAP ── */
+  #s10 { background: var(--navy); }
+  #s10 .s10-inner { flex: 1; padding: 3rem 4rem; display: flex; flex-direction: column; }
+  #s10 .s10-cards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; margin-top: 2rem; flex: 1; }
+  .pos-card {
+    border: 1px solid rgba(200,168,75,0.25);
+    border-radius: 4px;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .pos-card-icon {
+    width: 44px; height: 44px;
+    border: 1px solid rgba(200,168,75,0.4);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.5rem;
+    font-size: 20px;
+  }
+  .pos-card-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+  .pos-card-body {
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  /* ── SLIDE 11: RRA COMPLIANCE ── */
+  #s11 { background: var(--cream); }
+  #s11 .s11-inner { flex: 1; padding: 3rem 4rem; display: flex; flex-direction: column; }
+  #s11 .s11-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1.5rem; flex: 1; }
+  .rra-box { border-radius: 4px; padding: 2rem; }
+  .rra-yes { background: rgba(42,122,75,0.08); border: 1px solid rgba(42,122,75,0.2); }
+  .rra-no { background: rgba(192,57,43,0.06); border: 1px solid rgba(192,57,43,0.2); }
+  .rra-header {
+    display: flex; align-items: center; gap: 0.75rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+  .rra-yes .rra-header { color: #2a7a4b; }
+  .rra-no .rra-header { color: #c0392b; }
+  .rra-icon { font-size: 20px; }
+  .rra-item {
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text-mid);
+    padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(14,31,61,0.06);
+    line-height: 1.4;
+  }
+  .rra-item:last-child { border-bottom: none; }
+  .rra-yes .rra-item::before { content: '✓  '; color: #2a7a4b; font-weight: 700; }
+  .rra-no .rra-item::before { content: '✕  '; color: #c0392b; font-weight: 700; }
+
+  /* ── SLIDE 12: PERSONAS ── */
+  #s12 { background: var(--navy); }
+  #s12 .s12-inner { flex: 1; padding: 3rem 4rem; display: flex; flex-direction: column; }
+  #s12 .s12-cards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem; flex: 1; }
+  .persona-card { display: flex; flex-direction: column; overflow: hidden; border-radius: 4px; border: 1px solid rgba(200,168,75,0.18); }
+  .persona-icon-area {
+    height: 200px;
+    background: rgba(255,255,255,0.03);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .persona-icon-area svg { width: 140px; height: 140px; }
+  .persona-num {
+    position: absolute;
+    top: 1rem; left: 1.25rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: rgba(200,168,75,0.5);
+  }
+  .persona-content {
+    background: rgba(255,255,255,0.04);
+    border-top: 1px solid rgba(200,168,75,0.15);
+    padding: 1.25rem 1.25rem 1.5rem;
+    flex: 1;
+  }
+  .persona-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .persona-desc {
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.6;
+  }
+
+  /* ── SLIDE 13: PLATFORM IDEAS ── */
+  #s13 { background: var(--warm-white); }
+  #s13 .s13-inner { flex: 1; padding: 3rem 4rem; display: flex; flex-direction: column; }
+  #s13 .s13-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 1.5rem; flex: 1; }
+  .platform-card {
+    background: #fff;
+    border: 1px solid rgba(14,31,61,0.1);
+    border-radius: 4px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .platform-head { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
+  .platform-ico {
+    width: 36px; height: 36px;
+    background: var(--navy);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .platform-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--navy);
+  }
+  .platform-channels {
+    display: inline-block;
+    background: var(--navy);
+    color: var(--gold);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 3px 8px;
+    border-radius: 2px;
+    margin-bottom: 1rem;
+  }
+  .platform-concept {
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    color: var(--text-mid);
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(14,31,61,0.07);
+    line-height: 1.45;
+  }
+  .platform-concept:last-child { border-bottom: none; }
+  .platform-concept strong { color: var(--navy); }
+  #s13 .rra-note {
+    margin-top: 1rem;
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  /* ── SLIDE 14: AWARENESS TO CONVERSION ── */
+  #s14 { background: var(--navy); }
+  #s14 .s14-inner { flex: 1; padding: 3rem 4rem; display: flex; flex-direction: column; }
+  #s14 .s14-funnel { margin-top: 2rem; display: flex; flex-direction: column; gap: 0; flex: 1; }
+  .funnel-stage {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 1.5rem;
+    align-items: stretch;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .funnel-stage:last-child { border-bottom: none; background: rgba(200,168,75,0.08); border-radius: 4px; padding: 1.5rem; margin-top: 0.5rem; }
+  .funnel-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding-top: 3px;
+  }
+  .funnel-content { }
+  .funnel-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.4rem;
+  }
+  .funnel-detail {
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.5;
+  }
+  .funnel-detail strong { color: rgba(255,255,255,0.85); font-weight: 500; }
+
+  /* ── SLIDE 15: 90-DAY PRE-LAUNCH PLAN ── */
+  #s15 { background: var(--navy); }
+  #s15 .s15-inner { flex: 1; padding: 2.5rem 3.5rem; display: flex; flex-direction: column; }
+  #s15 .s15-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.25rem; margin-top: 1.5rem; flex: 1; }
+  .month-col {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(200,168,75,0.18);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .month-header {
+    background: rgba(200,168,75,0.1);
+    border-bottom: 1px solid rgba(200,168,75,0.25);
+    padding: 0.9rem 1.25rem;
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+  }
+  .month-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .month-theme {
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.45);
+    font-style: italic;
+  }
+  .month-items { padding: 1rem 1.25rem; flex: 1; display: flex; flex-direction: column; gap: 0; }
+  .month-item {
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.55rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    align-items: flex-start;
+  }
+  .month-item:last-child { border-bottom: none; }
+  .month-item-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+    margin-top: 6px;
+    opacity: 0.7;
+  }
+  .month-item-text {
+    font-family: 'Barlow', sans-serif;
+    font-size: 12.5px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.45;
+  }
+  .month-item-text strong { color: rgba(255,255,255,0.95); font-weight: 600; }
+  #s15 .s15-launch-bar {
+    margin-top: 1rem;
+    background: var(--gold);
+    border-radius: 3px;
+    padding: 0.85rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  #s15 .s15-launch-bar .launch-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--navy);
+  }
+  #s15 .s15-launch-bar .launch-items {
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--navy);
+    opacity: 0.8;
+  }
+
+  /* ── SLIDE 16: OPERATIONAL EXCELLENCE ── */
+  #s16 { background: var(--warm-white); }
+  #s16 .s16-inner { flex: 1; padding: 3rem 4rem; display: flex; flex-direction: column; }
+  #s16 .s16-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 1.5rem; flex: 1; }
+  .ops-item {
+    padding: 1.25rem 1.5rem;
+    background: #fff;
+    border-left: 3px solid var(--gold);
+    border-radius: 0 4px 4px 0;
+    border-top: 1px solid rgba(14,31,61,0.06);
+    border-right: 1px solid rgba(14,31,61,0.06);
+    border-bottom: 1px solid rgba(14,31,61,0.06);
+  }
+  .ops-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+  }
+  .ops-text {
+    font-family: 'Barlow', sans-serif;
+    font-size: 13.5px;
+    font-weight: 300;
+    color: var(--text-mid);
+    line-height: 1.55;
+  }
+
+  /* ── SLIDE 17: LINES THAT CLOSE ── */
+  #s17 { background: var(--navy); }
+  #s17 .s17-inner { flex: 1; padding: 3rem 4rem; display: flex; flex-direction: column; }
+  #s17 .s17-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem; flex: 1; }
+  .close-item {
+    border-top: 2px solid rgba(200,168,75,0.3);
+    padding-top: 1.5rem;
+  }
+  .close-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+  }
+  .close-line {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 400;
+    font-style: italic;
+    color: #fff;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+  .close-subtext {
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.5;
+  }
+
+  /* ── SLIDE 18: KPIs ── */
+  #s18 { background: var(--cream); }
+  #s18 .s18-inner { flex: 1; padding: 3rem 4rem; display: flex; flex-direction: column; }
+  .kpi-table { width: 100%; border-collapse: collapse; margin-top: 1.5rem; }
+  .kpi-table thead tr { background: var(--navy); }
+  .kpi-table thead th {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.85);
+    padding: 0.9rem 1.25rem;
+    text-align: left;
+  }
+  .kpi-table tbody tr { border-bottom: 1px solid rgba(14,31,61,0.08); }
+  .kpi-table tbody tr:nth-child(even) { background: rgba(200,168,75,0.05); }
+  .kpi-table tbody td {
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    color: var(--text-mid);
+    padding: 0.9rem 1.25rem;
+  }
+  .kpi-table td:first-child { color: var(--navy); font-weight: 500; }
+  .kpi-target {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: 0.5px;
+  }
+  #s18 .s18-closer {
+    margin-top: 2rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--navy);
+    border-radius: 3px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-align: center;
+  }
+
+  /* ── SLIDE 19: WHY ME ── */
+  #s19 { background: var(--navy); }
+  #s19 .s19-inner { flex: 1; padding: 3rem 4rem; display: flex; flex-direction: column; }
+  #s19 .s19-metrics { display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem; margin-top: 1.5rem; }
+  .why-metric {
+    border: 1px solid rgba(200,168,75,0.25);
+    border-radius: 4px;
+    padding: 1.25rem 1rem;
+    text-align: center;
+  }
+  .why-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .why-label {
+    font-family: 'Barlow', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.4;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  #s19 .s19-creds { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
+  .cred-block {
+    padding: 1rem 1.25rem;
+    background: rgba(255,255,255,0.04);
+    border-left: 2px solid var(--gold);
+    border-radius: 0 4px 4px 0;
+  }
+  .cred-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+  }
+  .cred-text {
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.5;
+  }
+  #s19 .s19-quote {
+    margin-top: 1.25rem;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid rgba(200,168,75,0.3);
+    border-radius: 3px;
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 400;
+    font-style: italic;
+    color: rgba(255,255,255,0.85);
+    text-align: center;
+    line-height: 1.6;
+  }
+  #s19 .s19-contact {
+    margin-top: 1rem;
+    text-align: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+  }
+
+  /* ── KEYBOARD HINT ── */
+  .key-hint {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Barlow', sans-serif;
+    font-size: 11px;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 1px;
+    pointer-events: none;
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-brand">Yardhouse <span>by Moda</span></div>
+  <div class="nav-controls">
+    <span class="nav-counter" id="counter">1 / 19</span>
+    <button class="nav-btn" onclick="prevSlide()">← Prev</button>
+    <button class="nav-btn" onclick="nextSlide()">Next →</button>
+  </div>
+</nav>
+
+<div class="deck">
+
+  <!-- SLIDE 1: COVER -->
+  <div class="slide active" id="s1">
+    <div class="cover-bg"></div>
+    <div class="cover-inner">
+      <div class="cover-eyebrow">Market Strategy &amp; Launch Playbook · May 2026</div>
+      <div class="cover-title">Yardhouse</div>
+      <div class="cover-subtitle">by Moda</div>
+      <div class="cover-rule"></div>
+      <div class="cover-meta">
+        White City's first design-led, all-inclusive co-living address<br>
+        Zone 2 · Wood Lane W12 · 209 homes
+      </div>
+      <div class="cover-address">Prepared by Rory O'Shea</div>
+    </div>
+    <div class="slide-num slide-num-light">01 / 19</div>
+  </div>
+
+  <!-- SLIDE 2: SECTOR INFLECTION POINT -->
+  <div class="slide" id="s2">
+    <div class="s2-inner">
+      <div class="s2-header">
+        <div class="v-bar" style="height:60px;"></div>
+        <div>
+          <div class="slide-tag">Market Context</div>
+          <div class="slide-h2">London's sector inflection point</div>
+        </div>
+      </div>
+      <div class="s2-stats">
+        <div class="stat-block">
+          <div class="stat-num">10,000+</div>
+          <div class="stat-label">Co-living homes in the London pipeline</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num">20%</div>
+          <div class="stat-label">Cost advantage vs equivalent private studios</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num">87%</div>
+          <div class="stat-label">Rise in co-living planning applications in 2024 vs 2023 — a record year</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num">84%</div>
+          <div class="stat-label">Of renters say proximity to shops and restaurants is a top priority — Yardhouse's position at Westfield makes this our frontline advantage</div>
+        </div>
+      </div>
+      <div class="s2-footer">
+        <div class="s2-insight">Co-living has moved from niche to mainstream. Planning authorities are embedding it into regeneration masterplans. The operator who builds brand leadership now sets the reference standard for the next decade.</div>
+        <div class="s2-source">Sources: Savills UK Co-Living Spotlight 2025<br>Bidwells Co-Living Survey 2025 (2,000+ renters)</div>
+      </div>
+    </div>
+    <div class="slide-num">02 / 19</div>
+  </div>
+
+  <!-- SLIDE 3: ONE ADDRESS -->
+  <div class="slide" id="s3">
+    <div class="s3-img"></div>
+    <div class="s3-content">
+      <div class="slide-tag">The Address</div>
+      <div class="slide-h2 slide-h2-light">One address.<br>A whole district.</div>
+      <div class="gold-rule"></div>
+      <div class="s3-facts">
+        <div class="s3-fact">
+          <div class="s3-fact-num">209</div>
+          <div class="s3-fact-text">Co-living homes</div>
+        </div>
+        <div class="s3-fact">
+          <div class="s3-fact-num">60</div>
+          <div class="s3-fact-text">Affordable homes — Women's Pioneer Housing</div>
+        </div>
+        <div class="s3-fact">
+          <div class="s3-fact-num">W12</div>
+          <div class="s3-fact-text">White City, Zone 2</div>
+        </div>
+        <div class="s3-fact">
+          <div class="s3-fact-num">2026</div>
+          <div class="s3-fact-text">Launch window</div>
+        </div>
+      </div>
+      <div class="s3-prop">"Room to belong. Space to move." — An inclusive co-living message rooted in openness, design quality and ease.</div>
+    </div>
+    <div class="slide-num slide-num-light">03 / 19</div>
+  </div>
+
+  <!-- SLIDE 4: COMPARABLES -->
+  <div class="slide" id="s4">
+    <div class="s4-inner">
+      <div style="display:flex;gap:1.5rem;align-items:flex-start;">
+        <div class="v-bar" style="height:60px;background:var(--navy);"></div>
+        <div>
+          <div class="slide-tag" style="color:var(--navy);">Competitive Landscape</div>
+          <div class="slide-h2">Market entry comparables</div>
+        </div>
+      </div>
+      <table class="moda-table">
+        <thead>
+          <tr>
+            <th>Scheme</th>
+            <th>Location &amp; Zone</th>
+            <th>Entry Rent (All-incl.)</th>
+            <th>Scale</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="highlight">
+            <td>Yardhouse (Moda)</td>
+            <td>White City W12 — Zone 2</td>
+            <td>£1,499/mo <span class="est-badge">PRE-LAUNCH</span></td>
+            <td>209 + 60 units</td>
+          </tr>
+          <tr>
+            <td>The Collective Old Oak <span style="font-size:11px;color:var(--text-muted);font-weight:400;display:block;margin-top:3px;">Now ARK / VervLife managed. Original operator entered administration 2021. Sold to Henderson Park 2025. CPO on surrounding land.</span></td>
+            <td>Old Oak NW10 — Zone 3</td>
+            <td>From £1,100/mo</td>
+            <td>550+ rooms</td>
+          </tr>
+          <tr>
+            <td>ARK Wembley</td>
+            <td>Wembley HA9 — Zone 4</td>
+            <td>From £1,699/mo</td>
+            <td>200+ studios</td>
+          </tr>
+          <tr>
+            <td>Vonder Wembley</td>
+            <td>Wembley HA9 — Zone 4</td>
+            <td>From £1,695/mo</td>
+            <td>300+ units</td>
+          </tr>
+          <tr>
+            <td>ARK Canary Wharf</td>
+            <td>Crossharbour E14 — DLR</td>
+            <td>From £1,733/mo</td>
+            <td>705 studios</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="data-note">* Verified May 2026 live market data. Yardhouse entry price pre-launch estimate pending final pricing sign-off. The Collective Old Oak included as a benchmark; original operator entered administration 2021, building sold to Henderson Park 2025 at £60m — less than half its 2018 valuation.</div>
+    </div>
+    <div class="slide-num">04 / 19</div>
+  </div>
+
+  <!-- SLIDE 5: PUBLIC REALM -->
+  <div class="slide" id="s5">
+    <div class="s5-inner">
+      <div style="display:flex;gap:1.5rem;align-items:flex-start;">
+        <div class="v-bar" style="height:60px;"></div>
+        <div>
+          <div class="slide-tag">Competitive Advantage</div>
+          <div class="slide-h2 slide-h2-light">The public realm advantage</div>
+        </div>
+      </div>
+      <table class="realm-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th class="yh-col">Yardhouse</th>
+            <th class="comp-col">The Collective Old Oak <span style="display:block;font-size:9px;font-weight:400;letter-spacing:0;text-transform:none;color:rgba(255,255,255,0.35);margin-top:2px;">Adm. 2021 · sold 2025 · CPO risk</span></th>
+            <th class="comp-col">ARK Wembley</th>
+            <th class="comp-col">ARK Canary Wharf</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>All-bills-included</td>
+            <td class="yh-col"><span class="chk">✓</span></td>
+            <td><span class="chk">✓</span></td>
+            <td><span class="chk">✓</span></td>
+            <td><span class="chk">✓</span></td>
+          </tr>
+          <tr>
+            <td>On-site gym</td>
+            <td class="yh-col"><span class="chk">✓</span></td>
+            <td><span class="chk">✓</span></td>
+            <td><span class="chk">✓</span></td>
+            <td><span class="chk">✓</span></td>
+          </tr>
+          <tr>
+            <td>Public ground floor</td>
+            <td class="yh-col yh-special">✓ Café + Neighbourhood Realm</td>
+            <td><span class="crs">✕</span></td>
+            <td><span class="crs">✕</span></td>
+            <td class="realm-partial"><span class="partial-tick">◐</span> Ground floor café — resident-facing<br><span style="font-size:11px;opacity:0.7;">Not a public neighbourhood asset</span></td>
+          </tr>
+          <tr>
+            <td>Tube zone</td>
+            <td class="yh-col"><span class="zone-yh">Zone 2</span></td>
+            <td><span class="zone-comp">Zone 3</span></td>
+            <td><span class="zone-comp">Zone 4</span></td>
+            <td><span class="zone-comp">Zone 2 / DLR</span></td>
+          </tr>
+          <tr>
+            <td>Affordable housing</td>
+            <td class="yh-col yh-special">60 dedicated homes</td>
+            <td style="color:rgba(255,255,255,0.4);font-size:13px;">DMR rooms</td>
+            <td><span class="crs">✕</span></td>
+            <td><span class="crs">✕</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="slide-num slide-num-light">05 / 19</div>
+  </div>
+
+  <!-- SLIDE 6: PRICE LADDER -->
+  <div class="slide" id="s6">
+    <div class="s6-inner">
+      <div style="display:flex;gap:1.5rem;align-items:flex-start;">
+        <div class="v-bar" style="height:60px;background:var(--navy);"></div>
+        <div>
+          <div class="slide-tag" style="color:var(--navy);">Pricing</div>
+          <div class="slide-h2">Monthly all-inclusive ladder</div>
+        </div>
+      </div>
+      <div class="ladder">
+        <div class="ladder-row">
+          <div class="ladder-label">Old Oak (Zone 3)</div>
+          <div class="ladder-bar-wrap"><div class="ladder-bar bar-comp" style="width:28%;">£1,100</div></div>
+        </div>
+        <div class="ladder-row">
+          <div class="ladder-label">ARK Wembley (Zone 4)</div>
+          <div class="ladder-bar-wrap"><div class="ladder-bar bar-comp" style="width:44%;">£1,699</div></div>
+        </div>
+        <div class="ladder-row">
+          <div class="ladder-label yh-label">Yardhouse target (Zone 2)</div>
+          <div class="ladder-bar-wrap"><div class="ladder-bar bar-yh" style="width:52%;">£1,499 – £1,799</div></div>
+        </div>
+        <div class="ladder-row">
+          <div class="ladder-label">ARK Shoreditch (Zone 1)</div>
+          <div class="ladder-bar-wrap"><div class="ladder-bar bar-comp" style="width:46%;">£1,799</div></div>
+        </div>
+        <div class="ladder-row">
+          <div class="ladder-label">Television Centre W12 (BTR)</div>
+          <div class="ladder-bar-wrap"><div class="ladder-bar bar-btr" style="width:74%;">£2,850+</div></div>
+        </div>
+        <div class="ladder-row">
+          <div class="ladder-label">White City Living W12 (BTR)</div>
+          <div class="ladder-bar-wrap"><div class="ladder-bar bar-btr" style="width:78%;">£3,000+</div></div>
+        </div>
+      </div>
+      <div class="s6-footer">All-inclusive advantage: Yardhouse at £1,599 represents a monthly saving of £1,400+ versus local BTR neighbours.</div>
+    </div>
+    <div class="slide-num">06 / 19</div>
+  </div>
+
+  <!-- SLIDE 7: DECISION MATRIX -->
+  <div class="slide" id="s7">
+    <div class="s7-inner">
+      <div style="display:flex;gap:1.5rem;align-items:flex-start;">
+        <div class="v-bar" style="height:60px;"></div>
+        <div>
+          <div class="slide-tag">Conversion Tool</div>
+          <div class="slide-h2 slide-h2-light">White City decision matrix</div>
+        </div>
+      </div>
+      <table class="matrix-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th class="yh-h">Yardhouse</th>
+            <th class="comp-h">White City Living</th>
+            <th class="comp-h">Private W12 Share</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Monthly all-in</td>
+            <td class="yh-best">£1,499 – £1,799</td>
+            <td>£3,200 – £3,350+</td>
+            <td>£1,700 – £2,300</td>
+          </tr>
+          <tr>
+            <td>Deposit</td>
+            <td class="yh-best">None</td>
+            <td>5 weeks</td>
+            <td>5 weeks</td>
+          </tr>
+          <tr>
+            <td>Bills &amp; gym</td>
+            <td class="yh-val">Included</td>
+            <td>Extra (£300+)</td>
+            <td>Extra (£250+)</td>
+          </tr>
+          <tr>
+            <td>Move-in timeline</td>
+            <td class="yh-val">Days</td>
+            <td>Weeks</td>
+            <td>Weeks</td>
+          </tr>
+          <tr>
+            <td>Community</td>
+            <td class="yh-val">Built-in — events, shared spaces, managed activation</td>
+            <td>None</td>
+            <td>Dependent on flatmates</td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="margin-top:1.25rem;font-family:'Barlow',sans-serif;font-size:12px;color:rgba(255,255,255,0.35);font-style:italic;">Under the Renters' Rights Act 2025 all tenancies are Assured Periodic Tenancies — legal flexibility is now a market baseline, not a differentiator. Yardhouse wins on cost, friction, and community.</div>
+    </div>
+    <div class="slide-num slide-num-light">07 / 19</div>
+  </div>
+
+  <!-- SLIDE 8: ZONE 2 ADVANTAGE -->
+  <div class="slide" id="s8">
+    <div class="s8-img"></div>
+    <div class="s8-content">
+      <div class="slide-tag" style="color:var(--navy);">Location</div>
+      <div class="slide-h2">First-mover Zone 2 advantage</div>
+      <div class="gold-rule" style="background:var(--navy);"></div>
+      <div class="s8-points">
+        <div class="s8-point">
+          <div class="s8-point-icon">🚇</div>
+          <div class="s8-point-text"><strong>Three lines.</strong> Central, Circle and Hammersmith &amp; City. Wood Lane station on the doorstep.</div>
+        </div>
+        <div class="s8-point">
+          <div class="s8-point-icon">🏛</div>
+          <div class="s8-point-text"><strong>Walkable employment base.</strong> Imperial College, BBC Media Village, and Westfield London within 10 minutes on foot.</div>
+        </div>
+        <div class="s8-point">
+          <div class="s8-point-icon">🏗</div>
+          <div class="s8-point-text"><strong>No co-living competition.</strong> No comparable scheme within a 10-minute walk of the building.</div>
+        </div>
+        <div class="s8-point">
+          <div class="s8-point-icon">📈</div>
+          <div class="s8-point-text"><strong>Regeneration corridor.</strong> White City is one of London's fastest-growing innovation and creative districts.</div>
+        </div>
+      </div>
+      <div class="s8-insight">No competitor combines Zone 2 address, Moda credibility, and public ground-floor realm.</div>
+    </div>
+    <div class="slide-num">08 / 19</div>
+  </div>
+
+  <!-- SLIDE 9: STRATEGIC POSITION -->
+  <div class="slide" id="s9">
+    <div class="s9-inner">
+      <div style="display:flex;gap:1.5rem;align-items:flex-start;">
+        <div class="v-bar" style="height:60px;background:var(--navy);"></div>
+        <div>
+          <div class="slide-tag" style="color:var(--navy);">Strategic Assessment</div>
+          <div class="slide-h2">Strategic position review</div>
+        </div>
+      </div>
+      <table class="position-table">
+        <thead>
+          <tr>
+            <th>Dimension</th>
+            <th>Yardhouse Position</th>
+            <th>Action Requirement</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Location prestige</td>
+            <td>Leads field — Zone 2</td>
+            <td class="action-cell">Lead all marketing with place narrative</td>
+          </tr>
+          <tr>
+            <td>Price vs BTR</td>
+            <td>£1,400+ cheaper all-in</td>
+            <td class="action-cell">Show the all-in comparison on every viewing</td>
+          </tr>
+          <tr>
+            <td>Public café</td>
+            <td>Unique feature in the market</td>
+            <td class="action-cell">Make the café the campaign hero asset</td>
+          </tr>
+          <tr>
+            <td>Social mission</td>
+            <td>60 dedicated affordable homes</td>
+            <td class="action-cell">Feature as a core brand value, not a footnote</td>
+          </tr>
+          <tr>
+            <td>Co-working <span class="gap-badge">Gap</span></td>
+            <td>Currently below competitors</td>
+            <td class="action-cell">Add dedicated work lounges pre-launch</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="slide-num">09 / 19</div>
+  </div>
+
+  <!-- SLIDE 10: POSITIONING GAP -->
+  <div class="slide" id="s10">
+    <div class="s10-inner">
+      <div style="display:flex;gap:1.5rem;align-items:flex-start;">
+        <div class="v-bar" style="height:60px;"></div>
+        <div>
+          <div class="slide-tag">Brand Strategy</div>
+          <div class="slide-h2 slide-h2-light">The positioning gap</div>
+        </div>
+      </div>
+      <div class="s10-cards">
+        <div class="pos-card">
+          <div class="pos-card-icon" style="color:var(--gold);">📍</div>
+          <div class="pos-card-title">Place-first</div>
+          <div class="pos-card-body">Sell the building's role in White City's creative and innovation corridor. The address is the differentiator — lead with it in every channel.</div>
+        </div>
+        <div class="pos-card">
+          <div class="pos-card-icon" style="color:var(--gold);">🏠</div>
+          <div class="pos-card-title">District-native</div>
+          <div class="pos-card-body">Lead with experience outcomes — what your days look and feel like here. Not the spec sheet, the life you get at this address.</div>
+        </div>
+        <div class="pos-card">
+          <div class="pos-card-icon" style="color:var(--gold);">🤝</div>
+          <div class="pos-card-title">Mission-backed</div>
+          <div class="pos-card-body">Warm, service-confident and rooted in social impact. The Women's Pioneer Housing partnership is a brand asset — use it with intention.</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-num slide-num-light">10 / 19</div>
+  </div>
+
+  <!-- SLIDE 11: RRA COMPLIANCE -->
+  <div class="slide" id="s11">
+    <div class="s11-inner">
+      <div style="display:flex;gap:1.5rem;align-items:flex-start;">
+        <div class="v-bar" style="height:60px;background:var(--navy);"></div>
+        <div>
+          <div class="slide-tag" style="color:var(--navy);">Legislation</div>
+          <div class="slide-h2">RRA 2025 compliance</div>
+        </div>
+      </div>
+      <div class="s11-cols">
+        <div class="rra-box rra-yes">
+          <div class="rra-header"><span class="rra-icon">✅</span> Yes — Place &amp; behaviour</div>
+          <div class="rra-item">"Design-led homes in White City"</div>
+          <div class="rra-item">"All-inclusive living with rooftop"</div>
+          <div class="rra-item">Target by behaviours — gym attendance, commuting patterns, proximity needs</div>
+          <div class="rra-item">Place-led copy anchored to W12 location and amenity</div>
+        </div>
+        <div class="rra-box rra-no">
+          <div class="rra-header"><span class="rra-icon">🚫</span> No — Protected characteristics</div>
+          <div class="rra-item">"Perfect for young professionals"</div>
+          <div class="rra-item">"Ideal for graduates"</div>
+          <div class="rra-item">Any targeting signals tied to age or life stage</div>
+          <div class="rra-item">Language that implies demographic selection</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-num">11 / 19</div>
+  </div>
+
+  <!-- SLIDE 12: PERSONAS -->
+  <div class="slide" id="s12">
+    <div class="s12-inner">
+      <div style="display:flex;gap:1.5rem;align-items:flex-start;">
+        <div class="v-bar" style="height:60px;"></div>
+        <div>
+          <div class="slide-tag">Target Audience</div>
+          <div class="slide-h2 slide-h2-light">Behaviour-based personas</div>
+        </div>
+      </div>
+      <div class="s12-cards">
+
+        <!-- PERSONA 1: CITY SWITCHER -->
+        <div class="persona-card">
+          <div class="persona-icon-area">
+            <div class="persona-num">01</div>
+            <!-- Icon: figure with luggage + map pin + arrow — movement, arrival, relocation -->
+            <svg viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Map pin drop shadow ring -->
+              <ellipse cx="70" cy="118" rx="28" ry="5" fill="rgba(200,168,75,0.08)"/>
+              <!-- City skyline background — faint -->
+              <rect x="18" y="72" width="10" height="22" rx="1" fill="rgba(200,168,75,0.1)"/>
+              <rect x="30" y="62" width="12" height="32" rx="1" fill="rgba(200,168,75,0.1)"/>
+              <rect x="44" y="68" width="8" height="26" rx="1" fill="rgba(200,168,75,0.1)"/>
+              <rect x="98" y="65" width="12" height="29" rx="1" fill="rgba(200,168,75,0.1)"/>
+              <rect x="112" y="72" width="10" height="22" rx="1" fill="rgba(200,168,75,0.1)"/>
+              <!-- Map pin -->
+              <path d="M70 20 C58 20 49 29 49 41 C49 57 70 78 70 78 C70 78 91 57 91 41 C91 29 82 20 70 20Z" fill="rgba(200,168,75,0.15)" stroke="#c8a84b" stroke-width="1.5"/>
+              <circle cx="70" cy="41" r="8" fill="#c8a84b"/>
+              <!-- Person silhouette inside pin -->
+              <circle cx="70" cy="38" r="3" fill="#0e1f3d"/>
+              <path d="M65 47 Q70 44 75 47" stroke="#0e1f3d" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              <!-- Suitcase -->
+              <rect x="54" y="88" width="22" height="18" rx="2" fill="none" stroke="#c8a84b" stroke-width="1.5"/>
+              <rect x="60" y="85" width="10" height="5" rx="1" fill="none" stroke="#c8a84b" stroke-width="1.2"/>
+              <line x1="65" y1="88" x2="65" y2="106" stroke="#c8a84b" stroke-width="1" opacity="0.5"/>
+              <line x1="54" y1="97" x2="76" y2="97" stroke="#c8a84b" stroke-width="1" opacity="0.5"/>
+              <!-- Wheels -->
+              <circle cx="58" cy="107" r="2" fill="#c8a84b"/>
+              <circle cx="72" cy="107" r="2" fill="#c8a84b"/>
+              <!-- Arrow — direction of travel -->
+              <path d="M82 96 L94 96 M89 91 L94 96 L89 101" stroke="rgba(200,168,75,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+          </div>
+          <div class="persona-content">
+            <div class="persona-name">City Switchers</div>
+            <div class="persona-desc">Relocating to London. Need a base that just works instantly. Often moving for work — corporate relocation or new role. No admin, no setup. Move in Monday, operational by Tuesday.</div>
+          </div>
+        </div>
+
+        <!-- PERSONA 2: ROUTINE OPTIMISER -->
+        <div class="persona-card">
+          <div class="persona-icon-area">
+            <div class="persona-num">02</div>
+            <!-- Icon: simplified life dashboard — bills crossed out, single clean circle = simplicity -->
+            <svg viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Outer circle — order, control -->
+              <circle cx="70" cy="70" r="44" stroke="rgba(200,168,75,0.2)" stroke-width="1"/>
+              <circle cx="70" cy="70" r="36" stroke="rgba(200,168,75,0.12)" stroke-width="1"/>
+              <!-- Central tick / resolved state -->
+              <circle cx="70" cy="70" r="22" fill="rgba(200,168,75,0.1)" stroke="#c8a84b" stroke-width="1.5"/>
+              <path d="M60 70 L67 77 L82 62" stroke="#c8a84b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <!-- Fragmented items around edge — bills, tasks, admin -->
+              <!-- Bill icon top-left -->
+              <rect x="16" y="26" width="18" height="22" rx="2" fill="none" stroke="rgba(200,168,75,0.35)" stroke-width="1.2"/>
+              <line x1="20" y1="33" x2="30" y2="33" stroke="rgba(200,168,75,0.35)" stroke-width="1"/>
+              <line x1="20" y1="37" x2="30" y2="37" stroke="rgba(200,168,75,0.35)" stroke-width="1"/>
+              <line x1="20" y1="41" x2="26" y2="41" stroke="rgba(200,168,75,0.35)" stroke-width="1"/>
+              <!-- X through bill -->
+              <line x1="16" y1="26" x2="34" y2="48" stroke="rgba(200,168,75,0.25)" stroke-width="1.2"/>
+              <line x1="34" y1="26" x2="16" y2="48" stroke="rgba(200,168,75,0.25)" stroke-width="1.2"/>
+              <!-- Wifi / utility icon top-right -->
+              <path d="M100 32 Q110 24 120 32" stroke="rgba(200,168,75,0.35)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+              <path d="M103 37 Q110 31 117 37" stroke="rgba(200,168,75,0.35)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+              <path d="M107 42 Q110 39 113 42" stroke="rgba(200,168,75,0.35)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+              <circle cx="110" cy="46" r="2" fill="rgba(200,168,75,0.35)"/>
+              <!-- X through wifi -->
+              <line x1="100" y1="28" x2="120" y2="50" stroke="rgba(200,168,75,0.25)" stroke-width="1.2"/>
+              <line x1="120" y1="28" x2="100" y2="50" stroke="rgba(200,168,75,0.25)" stroke-width="1.2"/>
+              <!-- Calendar icon bottom-left -->
+              <rect x="14" y="90" width="20" height="18" rx="2" fill="none" stroke="rgba(200,168,75,0.35)" stroke-width="1.2"/>
+              <line x1="14" y1="96" x2="34" y2="96" stroke="rgba(200,168,75,0.35)" stroke-width="1"/>
+              <line x1="19" y1="88" x2="19" y2="92" stroke="rgba(200,168,75,0.35)" stroke-width="1.2"/>
+              <line x1="29" y1="88" x2="29" y2="92" stroke="rgba(200,168,75,0.35)" stroke-width="1.2"/>
+              <line x1="14" y1="90" x2="34" y2="108" stroke="rgba(200,168,75,0.25)" stroke-width="1.2"/>
+              <line x1="34" y1="90" x2="14" y2="108" stroke="rgba(200,168,75,0.25)" stroke-width="1.2"/>
+              <!-- Key icon bottom-right -->
+              <circle cx="112" cy="98" r="8" fill="none" stroke="rgba(200,168,75,0.35)" stroke-width="1.2"/>
+              <line x1="120" y1="104" x2="130" y2="114" stroke="rgba(200,168,75,0.35)" stroke-width="1.2" stroke-linecap="round"/>
+              <line x1="126" y1="110" x2="126" y2="114" stroke="rgba(200,168,75,0.35)" stroke-width="1.2" stroke-linecap="round"/>
+              <line x1="128" y1="112" x2="130" y2="112" stroke="rgba(200,168,75,0.35)" stroke-width="1.2" stroke-linecap="round"/>
+              <line x1="104" y1="90" x2="122" y2="108" stroke="rgba(200,168,75,0.25)" stroke-width="1.2"/>
+              <line x1="122" y1="90" x2="104" y2="108" stroke="rgba(200,168,75,0.25)" stroke-width="1.2"/>
+            </svg>
+          </div>
+          <div class="persona-content">
+            <div class="persona-name">Routine Optimisers</div>
+            <div class="persona-desc">Managing fragmented bills and flatshare logistics. Want a home that handles life's background tasks so they can focus on what matters. All-inclusive is the proposition.</div>
+          </div>
+        </div>
+
+        <!-- PERSONA 3: COMMUNITY SEEKER -->
+        <div class="persona-card">
+          <div class="persona-icon-area">
+            <div class="persona-num">03</div>
+            <!-- Icon: three figures around a shared table — connection, community, shared space -->
+            <svg viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Shared table / surface -->
+              <ellipse cx="70" cy="82" rx="32" ry="9" fill="rgba(200,168,75,0.12)" stroke="#c8a84b" stroke-width="1.2"/>
+              <!-- Table leg suggestion -->
+              <line x1="70" y1="91" x2="70" y2="108" stroke="rgba(200,168,75,0.2)" stroke-width="1.5"/>
+              <!-- Central object on table — coffee cup / shared item -->
+              <ellipse cx="70" cy="80" rx="6" ry="3" fill="rgba(200,168,75,0.2)" stroke="#c8a84b" stroke-width="1"/>
+              <rect x="65" y="72" width="10" height="8" rx="1" fill="rgba(200,168,75,0.15)" stroke="#c8a84b" stroke-width="1"/>
+              <path d="M75 74 Q80 74 80 77 Q80 80 75 80" stroke="#c8a84b" stroke-width="1" fill="none"/>
+              <!-- Steam -->
+              <path d="M68 70 Q69 67 68 64" stroke="rgba(200,168,75,0.4)" stroke-width="1" stroke-linecap="round" fill="none"/>
+              <path d="M71 70 Q72 66 71 63" stroke="rgba(200,168,75,0.4)" stroke-width="1" stroke-linecap="round" fill="none"/>
+              <!-- Person LEFT -->
+              <circle cx="32" cy="52" r="9" fill="none" stroke="#c8a84b" stroke-width="1.5"/>
+              <circle cx="32" cy="49" r="4" fill="#c8a84b"/>
+              <path d="M24 62 Q32 57 40 62" stroke="#c8a84b" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              <!-- Left person arm to table -->
+              <path d="M36 65 Q46 72 50 78" stroke="rgba(200,168,75,0.5)" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+              <!-- Person RIGHT -->
+              <circle cx="108" cy="52" r="9" fill="none" stroke="#c8a84b" stroke-width="1.5"/>
+              <circle cx="108" cy="49" r="4" fill="#c8a84b"/>
+              <path d="M100 62 Q108 57 116 62" stroke="#c8a84b" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              <!-- Right person arm to table -->
+              <path d="M104 65 Q94 72 90 78" stroke="rgba(200,168,75,0.5)" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+              <!-- Person CENTRE TOP — slightly above, looking down into shared space -->
+              <circle cx="70" cy="32" r="10" fill="none" stroke="#c8a84b" stroke-width="1.5"/>
+              <circle cx="70" cy="29" r="4.5" fill="#c8a84b"/>
+              <path d="M62 43 Q70 38 78 43" stroke="#c8a84b" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              <!-- Centre person arm down -->
+              <path d="M70" cy="46" x2="70" y2="70" stroke="rgba(200,168,75,0.5)" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+              <line x1="70" y1="46" x2="70" y2="70" stroke="rgba(200,168,75,0.5)" stroke-width="1.2" stroke-linecap="round"/>
+              <!-- Connection lines between figures — faint -->
+              <line x1="41" y1="52" x2="60" y2="42" stroke="rgba(200,168,75,0.15)" stroke-width="1" stroke-dasharray="3 3"/>
+              <line x1="99" y1="52" x2="80" y2="42" stroke="rgba(200,168,75,0.15)" stroke-width="1" stroke-dasharray="3 3"/>
+              <line x1="41" y1="55" x2="99" y2="55" stroke="rgba(200,168,75,0.1)" stroke-width="1" stroke-dasharray="3 3"/>
+            </svg>
+          </div>
+          <div class="persona-content">
+            <div class="persona-name">Community Seekers</div>
+            <div class="persona-desc">Outgrown flat-shares but not ready to live alone. Want genuine social fabric — real connections, shared spaces that activate organically — not just a serviced apartment.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="slide-num slide-num-light">12 / 19</div>
+  </div>
+
+  <!-- SLIDE 13: PLATFORM IDEAS -->
+  <div class="slide" id="s13">
+    <div class="s13-inner">
+      <div style="display:flex;gap:1.5rem;align-items:flex-start;">
+        <div class="v-bar" style="height:60px;background:var(--navy);"></div>
+        <div>
+          <div class="slide-tag" style="color:var(--navy);">Marketing</div>
+          <div class="slide-h2">Platform ideas &amp; ad concepts</div>
+        </div>
+      </div>
+      <div class="s13-grid">
+        <div class="platform-card">
+          <div class="platform-head">
+            <div class="platform-ico" style="font-size:17px;">🗺</div>
+            <div class="platform-name">Paid search &amp; maps</div>
+          </div>
+          <div class="platform-channels">Google · Apple Maps</div>
+          <div class="platform-concept"><strong>"Your London, within 15 mins"</strong> — map-led utility ads targeting W12 relocation searches and "rooms to rent White City" queries.</div>
+          <div class="platform-concept"><strong>Geo-fenced discovery</strong> — Apple Maps listing and Google Business profile live before opening day.</div>
+        </div>
+        <div class="platform-card">
+          <div class="platform-head">
+            <div class="platform-ico" style="font-size:17px;">📱</div>
+            <div class="platform-name">Short-form social</div>
+          </div>
+          <div class="platform-channels">Instagram Reels · TikTok · YouTube Shorts</div>
+          <div class="platform-concept"><strong>"Neighbourhood Soundtrack"</strong> — short-form content built on W12 sounds and locations. Creator-led, not brand-produced.</div>
+          <div class="platform-concept"><strong>"More life, less admin"</strong> — benefit-led series showing the all-inclusive lifestyle vs the flatshare alternative.</div>
+        </div>
+        <div class="platform-card">
+          <div class="platform-head">
+            <div class="platform-ico" style="font-size:17px;">🎯</div>
+            <div class="platform-name">Consideration &amp; retargeting</div>
+          </div>
+          <div class="platform-channels">Meta · Pinterest</div>
+          <div class="platform-concept"><strong>Meta retargeting</strong> — warm audiences from waitlist sign-ups. Behaviour-targeted by commuting patterns and gym interest.</div>
+          <div class="platform-concept"><strong>Pinterest interior inspo</strong> — design-led content targeting users saving apartment and studio content in W1–SW postcodes.</div>
+        </div>
+        <div class="platform-card">
+          <div class="platform-head">
+            <div class="platform-ico" style="font-size:17px;">📢</div>
+            <div class="platform-name">OOH &amp; experiential</div>
+          </div>
+          <div class="platform-channels">OOH · Westfield · Imperial</div>
+          <div class="platform-concept"><strong>"See yourself here"</strong> — AR-enabled screens at Westfield London targeting inbound Shepherd's Bush and Wood Lane footfall.</div>
+          <div class="platform-concept"><strong>Imperial College outreach</strong> — postgraduate society partnerships and international student services briefing pre-launch.</div>
+        </div>
+      </div>
+      <div class="rra-note">All channels RRA-compliant — behaviour and place-led targeting only. See slide 11.</div>
+    </div>
+    <div class="slide-num">13 / 19</div>
+  </div>
+
+  <!-- SLIDE 14: AWARENESS TO CONVERSION -->
+  <div class="slide" id="s14">
+    <div class="s14-inner">
+      <div style="display:flex;gap:1.5rem;align-items:flex-start;">
+        <div class="v-bar" style="height:60px;"></div>
+        <div>
+          <div class="slide-tag">Funnel Strategy</div>
+          <div class="slide-h2 slide-h2-light">Awareness to conversion</div>
+        </div>
+      </div>
+      <div class="s14-funnel">
+        <div class="funnel-stage">
+          <div class="funnel-label">Awareness</div>
+          <div class="funnel-content">
+            <div class="funnel-title">OOH + Video</div>
+            <div class="funnel-detail"><strong>Wood Lane stations</strong> — contextual placement at point of daily commute. <strong>YouTube pre-roll</strong> — motion-led building reveal targeting W12 postcode interest. <strong>Creator neighbourhood storytelling</strong> — authentic district content from W12-based creators.</div>
+          </div>
+        </div>
+        <div class="funnel-stage">
+          <div class="funnel-label">Consideration</div>
+          <div class="funnel-content">
+            <div class="funnel-title">Social + Search</div>
+            <div class="funnel-detail"><strong>Meta retargeting</strong> — warm audiences from site visits and waitlist interaction. <strong>Pinterest interior inspo</strong> — design-led content for apartment and studio savers. <strong>Branded search capture</strong> — "Yardhouse" and "Moda White City" terms owned before launch.</div>
+          </div>
+        </div>
+        <div class="funnel-stage">
+          <div class="funnel-label">Conversion</div>
+          <div class="funnel-content">
+            <div class="funnel-title">CRM Waitlist Journey + Open House Events</div>
+            <div class="funnel-detail">Structured CRM touchpoint sequence from waitlist sign-up to booked viewing. Three-email nurture cadence. <strong>Open House after-hours events</strong> — activated pre-launch, building community before first move-ins.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-num slide-num-light">14 / 19</div>
+  </div>
+
+  <!-- SLIDE 15: 90-DAY PRE-LAUNCH PLAN -->
+  <div class="slide" id="s15">
+    <div class="s15-inner">
+      <div style="display:flex;gap:1.5rem;align-items:flex-start;">
+        <div class="v-bar" style="height:60px;"></div>
+        <div>
+          <div class="slide-tag">Execution</div>
+          <div class="slide-h2 slide-h2-light">90-day pre-launch plan <span style="font-size:16px;font-weight:300;letter-spacing:0;text-transform:none;color:rgba(255,255,255,0.4);">July → October PC</span></div>
+        </div>
+      </div>
+
+      <div class="s15-grid">
+
+        <!-- JULY -->
+        <div class="month-col">
+          <div class="month-header">
+            <div class="month-name">July</div>
+            <div class="month-theme">Learn the infrastructure</div>
+          </div>
+          <div class="month-items">
+            <div class="month-item">
+              <div class="month-item-dot"></div>
+              <div class="month-item-text"><strong>Moda SOPs end-to-end.</strong> Not just reading — interrogating. Where does each SOP assume a mature scheme? Where does it need adapting for a 209-unit co-living pre-launch?</div>
+            </div>
+            <div class="month-item">
+              <div class="month-item-dot"></div>
+              <div class="month-item-text"><strong>Spike Global — beyond proficient.</strong> Build the full enquiry-to-move-in workflow. Understand how the system breaks when process isn't followed. Train-ready by end of month.</div>
+            </div>
+            <div class="month-item">
+              <div class="month-item-dot"></div>
+              <div class="month-item-text"><strong>Internal stakeholder mapping.</strong> Meet marketing, asset management, and head office leasing contacts. Understand who owns which decisions before making any.</div>
+            </div>
+            <div class="month-item">
+              <div class="month-item-dot"></div>
+              <div class="month-item-text"><strong>Competitor site visits.</strong> Walk every comparable in person — ARK Canary Wharf, The Collective, Television Centre. Written about them; now stand in them.</div>
+            </div>
+            <div class="month-item">
+              <div class="month-item-dot"></div>
+              <div class="month-item-text"><strong>ERV baseline.</strong> Validate opening rents against live W12 market data. Establish the pricing model before it gets locked.</div>
+            </div>
+            <div class="month-item">
+              <div class="month-item-dot"></div>
+              <div class="month-item-text"><strong>Waitlist infrastructure live.</strong> Pre-registration page active, CRM capturing and categorising leads by persona and source from day one.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- AUGUST -->
+        <div class="month-col">
+          <div class="month-header">
+            <div class="month-name">August</div>
+            <div class="month-theme">Build the pipeline</div>
+          </div>
+          <div class="month-items">
+            <div class="month-item">
+              <div class="month-item-dot"></div>
+              <div class="month-item-text"><strong>Corporate partnership outreach.</strong> Imperial College, BBC Media Village, White City Incubator, Westfield corporate contacts. Long lead times — start now, convert at PC.</div>
+            </div>
+            <div class="month-item">
+              <div class="month-item-dot"></div>
+              <div class="month-item-text"><strong>Marketing collaboration.</strong> Feed ground-level insight to the marketing team — prospect objections, qualifying questions, what the W12 renter actually asks on a viewing. Their content, sharper.</div>
+            </div>
+            <div class="month-item">
+              <div class="month-item-dot"></div>
+              <div class="month-item-text"><strong>Third-party agent briefing.</strong> Align on commission structure, referral process, and brand standards. Controlled channel, not a parallel sales team.</div>
+            </div>
+            <div class="month-item">
+              <div class="month-item-dot"></div>
+              <div class="month-item-text"><strong>Viewing script drafted and reviewed.</strong> Five core talking points. All-in cost comparison as the leave-behind. Ready for team training by September.</div>
+            </div>
+            <div class="month-item">
+              <div class="month-item-dot"></div>
+              <div class="month-item-text"><strong>Waitlist nurture cadence active.</strong> Three-email sequence from sign-up to booked viewing. SLA: same-day response to every inbound enquiry.</div>
+            </div>
+            <div class="month-item">
+              <div class="month-item-dot"></div>
+              <div class="month-item-text"><strong>Open House planning.</strong> Format confirmed, guest list pipeline identified, event brief to marketing. Community before first move-in.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SEPTEMBER -->
+        <div class="month-col">
+          <div class="month-header">
+            <div class="month-name">September</div>
+            <div class="month-theme">Stress-test everything</div>
+          </div>
+          <div class="month-items">
+            <div class="month-item">
+              <div class="month-item-dot"></div>
+              <div class="month-item-text"><strong>Full process simulation.</strong> Run the enquiry-to-application journey end-to-end in Spike. Find the breaks before launch — not after first move-in.</div>
+            </div>
+            <div class="month-item">
+              <div class="month-item-dot"></div>
+              <div class="month-item-text"><strong>Team recruited, trained, signed off.</strong> Leasing associates competent on SOPs, Spike workflow, viewing script, and RRA compliance. No gaps on day one.</div>
+            </div>
+            <div class="month-item">
+              <div class="month-item-dot"></div>
+              <div class="month-item-text"><strong>Corporate pipeline review.</strong> Which relationships have progressed to confirmed interest? Which need a different approach before PC?</div>
+            </div>
+            <div class="month-item">
+              <div class="month-item-dot"></div>
+              <div class="month-item-text"><strong>Final ERV sign-off.</strong> Opening rents sense-checked against live market moves since July. Incentive structure agreed with head office.</div>
+            </div>
+            <div class="month-item">
+              <div class="month-item-dot"></div>
+              <div class="month-item-text"><strong>RRA compliance audit.</strong> Every piece of copy, every channel, every application template checked. Income verification workflow tested in full.</div>
+            </div>
+            <div class="month-item">
+              <div class="month-item-dot"></div>
+              <div class="month-item-text"><strong>KPI dashboard live.</strong> Weekly reporting framework agreed with Moda. Waitlist→viewing, viewing→application, cost per lead all tracked from PC day one.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="s15-launch-bar">
+        <div class="launch-label">October — PC &amp; Launch</div>
+        <div class="launch-items">Open House activations · Waitlist converts to signed tenancies · Community event week one · Target 40–50% occupancy within 30 days</div>
+      </div>
+
+    </div>
+    <div class="slide-num slide-num-light">15 / 19</div>
+  </div>
+
+  <!-- SLIDE 16: OPERATIONAL EXCELLENCE -->
+  <div class="slide" id="s16">
+    <div class="s16-inner">
+      <div style="display:flex;gap:1.5rem;align-items:flex-start;">
+        <div class="v-bar" style="height:60px;background:var(--navy);"></div>
+        <div>
+          <div class="slide-tag" style="color:var(--navy);">Operations</div>
+          <div class="slide-h2">Operational excellence</div>
+        </div>
+      </div>
+      <div class="s16-grid">
+        <div class="ops-item">
+          <div class="ops-label">Enquiry management</div>
+          <div class="ops-text">Structured CRM. All leads categorised by persona and source. Same-day response standard. Every enquiry tracked from channel to close.</div>
+        </div>
+        <div class="ops-item">
+          <div class="ops-label">Revenue management</div>
+          <div class="ops-text">Monthly revenue review against occupancy pace. Incentive structure pre-agreed with head office. ERV reviewed at 90 days post-launch.</div>
+        </div>
+        <div class="ops-item">
+          <div class="ops-label">Viewings</div>
+          <div class="ops-text">Scripted around 5 core talking points. All-in cost comparison shown as a leave-behind on every visit. Closing at point of viewing, not follow-up.</div>
+        </div>
+        <div class="ops-item">
+          <div class="ops-label">Retention</div>
+          <div class="ops-text">Welcome pack on day one. Events calendar communicated at point of application. Renewal conversations begin at week eight, not week twelve.</div>
+        </div>
+        <div class="ops-item">
+          <div class="ops-label">Compliance</div>
+          <div class="ops-text">RRA-compliant copy in all materials. Income verification built into online applications. Periodic tenancy documentation ready for Renters Rights Act alignment.</div>
+        </div>
+        <div class="ops-item">
+          <div class="ops-label">Reporting</div>
+          <div class="ops-text">Weekly leasing dashboard for Moda head office. Cost per acquisition tracked from day one. Enquiry-to-viewing, viewing-to-offer conversion reported weekly.</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-num">16 / 19</div>
+  </div>
+
+  <!-- SLIDE 17: LINES THAT CLOSE -->
+  <div class="slide" id="s17">
+    <div class="s17-inner">
+      <div style="display:flex;gap:1.5rem;align-items:flex-start;">
+        <div class="v-bar" style="height:60px;"></div>
+        <div>
+          <div class="slide-tag">Sales</div>
+          <div class="slide-h2 slide-h2-light">Lines that close</div>
+        </div>
+      </div>
+      <div class="s17-grid">
+        <div class="close-item">
+          <div class="close-num">01</div>
+          <div class="close-line">"One address, a whole district."</div>
+          <div class="close-subtext">Residents are a walk from Imperial College, Westfield London, and two tube lines. The building is the cheapest way to live in one of London's most connected postcodes.</div>
+        </div>
+        <div class="close-item">
+          <div class="close-num">02</div>
+          <div class="close-line">"Moda operational track record."</div>
+          <div class="close-subtext">Professional operator with £6bn GDV behind the scheme — not a startup pivot. Homeviews Operator of the Year. You are in experienced hands.</div>
+        </div>
+        <div class="close-item">
+          <div class="close-num">03</div>
+          <div class="close-line">"Public café = Neighbourhood."</div>
+          <div class="close-subtext">Not a gated compound. The open ground-floor realm creates a community building that belongs to White City — not just to residents.</div>
+        </div>
+        <div class="close-item">
+          <div class="close-num">04</div>
+          <div class="close-line">"Total cost, not headline rent."</div>
+          <div class="close-subtext">£1,599 all-inclusive versus £3,200+ equivalent at White City Living. Show the £1,600/month saving on every viewing. That's not a pitch — it's arithmetic.</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-num slide-num-light">17 / 19</div>
+  </div>
+
+  <!-- SLIDE 18: KPIs -->
+  <div class="slide" id="s18">
+    <div class="s18-inner">
+      <div style="display:flex;gap:1.5rem;align-items:flex-start;">
+        <div class="v-bar" style="height:60px;background:var(--navy);"></div>
+        <div>
+          <div class="slide-tag" style="color:var(--navy);">Performance</div>
+          <div class="slide-h2">Primary launch KPIs</div>
+        </div>
+      </div>
+      <table class="kpi-table">
+        <thead>
+          <tr>
+            <th>KPI Metric</th>
+            <th>Target</th>
+            <th>Strategic Insight</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Waitlist → Booked viewing</td>
+            <td><span class="kpi-target">35%</span></td>
+            <td>Whether awareness is converting to genuine intent</td>
+          </tr>
+          <tr>
+            <td>Viewing → Application</td>
+            <td><span class="kpi-target">12%</span></td>
+            <td>Whether the product delivers on its promise at point of visit</td>
+          </tr>
+          <tr>
+            <td>Time to 50% occupancy</td>
+            <td><span class="kpi-target">6 months</span></td>
+            <td>Operational pace vs market demand — faster than BTR norms given co-living churn profile</td>
+          </tr>
+          <tr>
+            <td>Cost per waitlist sign-up</td>
+            <td><span class="kpi-target">&lt; £18</span></td>
+            <td>Efficiency of paid media funnel — benchmark against Moda existing schemes</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="s18-closer">Yardhouse wins by being the district. Launch to fill.</div>
+    </div>
+    <div class="slide-num">18 / 19</div>
+  </div>
+
+  <!-- SLIDE 19: WHY ME -->
+  <div class="slide" id="s19">
+    <div class="s19-inner">
+      <div style="display:flex;gap:1.5rem;align-items:flex-start;">
+        <div class="v-bar" style="height:60px;"></div>
+        <div>
+          <div class="slide-tag">The Operator</div>
+          <div class="slide-h2 slide-h2-light">The operator behind the strategy</div>
+        </div>
+      </div>
+      <div class="s19-metrics">
+        <div class="why-metric">
+          <div class="why-num">60%+</div>
+          <div class="why-label">Average close rate — Cortland Colliers Yard pre-launch, 559 units</div>
+        </div>
+        <div class="why-metric">
+          <div class="why-num">No.1</div>
+          <div class="why-label">NOI vs budget — Essential Living portfolio, two sites, 225 units</div>
+        </div>
+        <div class="why-metric">
+          <div class="why-num">£100k+</div>
+          <div class="why-label">Monthly revenue added via ERV review — identified, built, presented internally</div>
+        </div>
+        <div class="why-metric">
+          <div class="why-num">75%</div>
+          <div class="why-label">Renewal rate at Dressage Court — lifestyle-led, not reactive renegotiation</div>
+        </div>
+      </div>
+      <div class="s19-creds">
+        <div class="cred-block">
+          <div class="cred-title">Pre-launch experience</div>
+          <div class="cred-text">Built CRM workflows, compliance systems and process infrastructure at Colliers Yard before the first resident arrived. Yardhouse needs the same.</div>
+        </div>
+        <div class="cred-block">
+          <div class="cred-title">Co-living demographic</div>
+          <div class="cred-text">Managed City Switchers, international tenants and corporate relocators at Colliers Yard. The three personas in this deck are people I've already leased to.</div>
+        </div>
+        <div class="cred-block">
+          <div class="cred-title">Revenue management</div>
+          <div class="cred-text">ERV analysis, renewal strategy and NOI reporting are core to how I operate — not add-ons. Slide 18's KPIs are the framework I'd track from day one.</div>
+        </div>
+        <div class="cred-block">
+          <div class="cred-title">Legislation-ready</div>
+          <div class="cred-text">RRA 2025 is embedded in this deck because I've translated it into operational practice — compliant copy, income verification, periodic tenancy planning.</div>
+        </div>
+      </div>
+      <div class="s19-quote">"This deck is not a hypothetical. It's how I would run Yardhouse — built on four years of doing this at scale."</div>
+      <div class="s19-contact">Rory O'Shea · contactroryoshea@gmail.com · 07865 705805</div>
+    </div>
+    <div class="slide-num slide-num-light">19 / 19</div>
+  </div>
+
+</div>
+
+<div class="key-hint">← → arrow keys or buttons to navigate</div>
+
+<script>
+  let current = 0;
+  const slides = document.querySelectorAll('.slide');
+  const total = slides.length;
+
+  function showSlide(n) {
+    slides[current].classList.remove('active');
+    current = (n + total) % total;
+    slides[current].classList.add('active');
+    document.getElementById('counter').textContent = (current + 1) + ' / ' + total;
+  }
+
+  function nextSlide() { showSlide(current + 1); }
+  function prevSlide() { showSlide(current - 1); }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') nextSlide();
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') prevSlide();
+  });
+</script>
+</body>
+</html>
